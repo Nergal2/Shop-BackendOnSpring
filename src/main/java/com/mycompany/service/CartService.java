@@ -50,16 +50,16 @@ public class CartService {
                 cartRecTemp.setImagepath(cartRec.getImagepath());
                 cartRecTemp.setNumb(cartItemTemp.getNumb());
                 cartRecipeTempDb.add(cartRecTemp);
-                System.out.println(cartRecTemp.getName()+" "+cartRecTemp.getNumb());
-                totalPrice = totalPrice-cartRec.getPrice()*cartItemTemp.getNumb(); // check if the totalprice is correct 
+                System.out.println(cartRecTemp.getName() + " " + cartRecTemp.getNumb());
+                totalPrice = totalPrice - cartRec.getPrice() * cartItemTemp.getNumb(); // check if the totalprice is correct 
             }
-            if (totalPrice == 0){
+            if (totalPrice == 0) {
                 cartTemp.setCartrecipedb(cartRecipeTempDb);
                 //       String s1 = this.cartRepository.storeCartdb(cartTemp);
                 //       System.out.println(s1);
                 return cartTemp;
             } else {
-                System.out.println("Total price is different by "+totalPrice);
+                System.out.println("Total price is different by " + totalPrice);
                 return null;
             }
         } else {

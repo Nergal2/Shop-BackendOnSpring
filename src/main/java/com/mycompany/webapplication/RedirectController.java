@@ -17,21 +17,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 // @RequestMapping(value = "/catalogue")
 public class RedirectController {
-    
+
     @RequestMapping(value = "/catalogue", method = RequestMethod.GET)
-    public String getCatalogue(){
+    public String getCatalogue() {
         System.out.println("Redirection");
         return "redirect:/";
     }
-    
+
     @RequestMapping(value = "/catalogue/{id}", method = RequestMethod.GET)
-    public String getCatalogueId(@PathVariable("id") String s){
-        System.out.println("Redirection "+s);
+    public String getCatalogueId(@PathVariable("id") String s) {
+        System.out.println("Redirection " + s);
         return "redirect:/";
     }
-    
+
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public String getCart(){
+    public String getCart() {
         System.out.println("Redirection");
         return "redirect:/";
     }

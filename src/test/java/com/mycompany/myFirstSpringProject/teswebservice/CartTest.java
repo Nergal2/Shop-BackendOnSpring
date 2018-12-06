@@ -40,13 +40,13 @@ public class CartTest {
     private CartService cartService;
     @Autowired
     private MockMvc mockMvc;
-    
+
     private ObjectMapper mapper = new ObjectMapper();
-    String jsonCart = "{\"name\": \"Vegan\",\"email\":\"vegan@yoga.ru\",\"price\":600,\"sex\":\"Androgyne — гермафродит\", " +
-    "\"cart\":[{\"numb\": 3,\"rec\":{\"description\":\"Черный кабачок\",\"id\": 7899.450795102266,"+
-    "\"imagepath\": \"https://mcdn01.gittigidiyor.net/23724/tn30/237241576_tn30_0.jpg\", \"name\": \"Баклажан\","+
-    "\"price\": 300}}]}";
-    
+    String jsonCart = "{\"name\": \"Vegan\",\"email\":\"vegan@yoga.ru\",\"price\":600,\"sex\":\"Androgyne — гермафродит\", "
+            + "\"cart\":[{\"numb\": 3,\"rec\":{\"description\":\"Черный кабачок\",\"id\": 7899.450795102266,"
+            + "\"imagepath\": \"https://mcdn01.gittigidiyor.net/23724/tn30/237241576_tn30_0.jpg\", \"name\": \"Баклажан\","
+            + "\"price\": 300}}]}";
+
     @Test
     public void storeCartTest() throws Exception {
         Cart cart = new Cart("name", "email", "sex", 220, "20");
@@ -55,17 +55,17 @@ public class CartTest {
         CartItem[] ciarr = new CartItem[1];
         ciarr[0] = ci;
         cart.setCart(ciarr);
-        
+
         Cartdb cartdb = new Cartdb();
         given(cartService.createNewCart(cart)).willReturn(cartdb);
-        
+
         this.mockMvc.perform(post("/rest/cart/new")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonCart))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Vegan")));
     }
-    
+
     @Test
     public void storeCartServiceTest() throws Exception {
 //        Cart cart = new Cart("name", "email", "sex", 221, "20");
