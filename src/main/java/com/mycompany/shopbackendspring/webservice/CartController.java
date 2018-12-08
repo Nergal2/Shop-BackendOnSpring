@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.webservice;
+package com.mycompany.shopbackendspring.webservice;
 
-import com.mycompany.data.entity.Cart;
-import com.mycompany.service.CartService;
+import com.mycompany.shopbackendspring.data.entity.Cart;
+import com.mycompany.shopbackendspring.data.entity.Cartdb;
+import com.mycompany.shopbackendspring.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,9 @@ public class CartController {
             produces = "application/json", consumes = "application/json")
     public Cart storeCart(@RequestBody Cart cart) {
         System.out.println(cart.getName());
-        cartService.createNewCart(cart);
+        Cartdb cart1 = cartService.createNewCart(cart);
+      //  return cart1.getName();
+        cart.setName(cart1.getName());
         return cart;
     }
 }

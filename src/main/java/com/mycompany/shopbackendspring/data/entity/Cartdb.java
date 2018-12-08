@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.data.entity;
+package com.mycompany.shopbackendspring.data.entity;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,6 +14,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -24,6 +26,8 @@ import javax.validation.constraints.NotNull;
  */
 @Entity //(name = "cartdb")
 @Table(name = "cartdb")
+@NamedQueries({
+    @NamedQuery(name = "Cartdb.getCarts", query = "SELECT c FROM Cartdb c")})
 public class Cartdb implements Serializable {
 
     @NotNull
@@ -49,7 +53,6 @@ public class Cartdb implements Serializable {
 
     @NotNull
     @OneToMany(targetEntity = Cartrecipedb.class, cascade = CascadeType.PERSIST)
-
     private Set<Cartrecipedb> cartrecipedb = new HashSet<>();
 
     public String getName() {

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myFirstSpringProject.teswebservice;
+package com.mycompany.shopbackendspring.teswebservice;
 
-import com.mycompany.data.entity.Recipe;
-import com.mycompany.webservice.RecipeController;
+import com.mycompany.shopbackendspring.data.entity.Recipe;
+import com.mycompany.shopbackendspring.webservice.RecipeController;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
@@ -38,7 +38,7 @@ public class RecipiesTest {
 //        lst.add(new Recipe(220, "Tomatoes", 220));
 //        lst.add(new Recipe(230, "Морковь", 280));
 
-        this.mockMvc.perform(get("/rest/recipies/all")).andExpect(status().isOk())
+        this.mockMvc.perform(get("/rest/recipies/all1")).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tomatoes")));
     }
 

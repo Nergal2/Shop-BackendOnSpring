@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.myFirstSpringProject.teswebservice;
+package com.mycompany.shopbackendspring.teswebservice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mycompany.data.entity.Cart;
-import com.mycompany.data.entity.CartItem;
-import com.mycompany.data.entity.Cartdb;
-import com.mycompany.data.entity.Recipe;
-import com.mycompany.service.CartService;
-import com.mycompany.webservice.CartController;
+import com.mycompany.shopbackendspring.data.entity.Cart;
+import com.mycompany.shopbackendspring.data.entity.CartItem;
+import com.mycompany.shopbackendspring.data.entity.Cartdb;
+import com.mycompany.shopbackendspring.data.entity.Recipe;
+import com.mycompany.shopbackendspring.service.CartService;
+import com.mycompany.shopbackendspring.webservice.CartController;
 import static org.hamcrest.CoreMatchers.containsString;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,15 +49,9 @@ public class CartTest {
 
     @Test
     public void storeCartTest() throws Exception {
-        Cart cart = new Cart("name", "email", "sex", 220, "20");
-        CartItem ci = new CartItem();
-        ci.setRec(new Recipe(220, "Tomatoes", 220));
-        CartItem[] ciarr = new CartItem[1];
-        ciarr[0] = ci;
-        cart.setCart(ciarr);
-
-        Cartdb cartdb = new Cartdb();
-        given(cartService.createNewCart(cart)).willReturn(cartdb);
+        Cart cart1 = mapper.readValue(jsonCart, Cart.class);
+        Cartdb cartdb = new Cartdb("Vegan", 600, "vegan@yoga.ru", "Androgyne — гермафродит", 0);
+        given(cartService.createNewCart(cart1)).willReturn(cartdb);
 
         this.mockMvc.perform(post("/rest/cart/new")
                 .contentType(MediaType.APPLICATION_JSON)

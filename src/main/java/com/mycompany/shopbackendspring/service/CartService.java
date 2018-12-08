@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.service;
+package com.mycompany.shopbackendspring.service;
 
-import com.mycompany.data.entity.Cart;
-import com.mycompany.data.entity.CartItem;
-import com.mycompany.data.entity.Cartdb;
-import com.mycompany.data.entity.Cartrecipedb;
-import com.mycompany.data.entity.Recipe;
-import com.mycompany.data.repository.CartRepository;
+import com.mycompany.shopbackendspring.data.entity.Cart;
+import com.mycompany.shopbackendspring.data.entity.CartItem;
+import com.mycompany.shopbackendspring.data.entity.Cartdb;
+import com.mycompany.shopbackendspring.data.entity.Cartrecipedb;
+import com.mycompany.shopbackendspring.data.entity.Recipe;
+import com.mycompany.shopbackendspring.data.repository.CartRepository;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;

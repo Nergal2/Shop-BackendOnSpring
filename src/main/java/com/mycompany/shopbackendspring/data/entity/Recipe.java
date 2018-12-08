@@ -3,61 +3,63 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.data.entity;
+package com.mycompany.shopbackendspring.data.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Администратор
  */
-@Entity//(name = "cartrecipedb")
-@Table(name = "cartrecipedb")
-public class Cartrecipedb implements Serializable {
+@XmlRootElement
+@Entity //(name = "recipe")
+@Table(name = "recipe")
+@NamedQueries({
+    @NamedQuery(name = "Recipe.findAll", query = "SELECT r FROM Recipe r")})
+//@Access(AccessType.PROPERTY)
+public class Recipe implements Serializable {
 
     @Id
-    @NotNull
-    @Column(name = "orderid")
-    private int orderid;
-
-    @Id
+    @Basic(optional = false)
     @NotNull
     @Column(name = "id")
     private int id;
 
+    @Basic(optional = false)
     @NotNull
     @Column(name = "name")
     private String name;
 
+    @Basic(optional = false)
     @NotNull
     @Column(name = "price")
     private int price;
 
+    @Basic(optional = false)
     @Column(name = "description")
     private String description;
 
+    @Basic(optional = false)
     @Column(name = "imagepath")
     private String imagepath;
 
-    @NotNull
-    @Column(name = "numb")
-    private int numb;
-
-    public Cartrecipedb() {
+    public Recipe() {
     }
 
-    public int getOrderid() {
-        return orderid;
-    }
-
-    public void setOrderid(int orderid) {
-        this.orderid = orderid;
+    public Recipe(int id, String name, int price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
     }
 
     public int getId() {
@@ -100,21 +102,20 @@ public class Cartrecipedb implements Serializable {
         this.imagepath = imagepath;
     }
 
-    public int getNumb() {
-        return numb;
-    }
-
-    public void setNumb(int numb) {
-        this.numb = numb;
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (name != null ? name.hashCode() : 0);
+        return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cartrecipedb)) {
+        if (!(object instanceof Recipe)) {
             return false;
         }
-        Cartrecipedb other = (Cartrecipedb) object;
+        Recipe other = (Recipe) object;
         if ((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.name))) {
             return false;
         }
