@@ -6,17 +6,13 @@
 package com.mycompany.shopbackendspring.webservice;
 
 import com.mycompany.shopbackendspring.data.entity.Recipe;
-import com.mycompany.shopbackendspring.data.repository.RecipeRepository;
 import com.mycompany.shopbackendspring.service.RecipeService;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -29,12 +25,10 @@ public class RecipeController {
     @Autowired
     private RecipeService recipeService;
 
-    @RequestMapping(value = "/rest/recipies/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/rest/recipies/all", method = RequestMethod.GET, produces = "application/json")
     List<Recipe> findAll() {
-//        List<Recipe> r = new ArrayList<>();
-//        r = this.repository.getRecipies();
         return recipeService.findAll();
-      }
+    }
 
 //    @RequestMapping(value = "/recipie", method = RequestMethod.GET)
 //    List<Recipe> findAll(@RequestParam(required = false) String id) {

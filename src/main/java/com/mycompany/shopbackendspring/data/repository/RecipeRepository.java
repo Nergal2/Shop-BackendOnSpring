@@ -20,7 +20,7 @@ import org.springframework.stereotype.Repository;
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
     public Recipe findById(String number);
-    
+
     @Query("SELECT r FROM Recipe r")
     public List<Recipe> getRecipies();
 }

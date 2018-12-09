@@ -52,7 +52,7 @@ public class Cartdb implements Serializable {
     private int orderid;
 
     @NotNull
-    @OneToMany(targetEntity = Cartrecipedb.class, cascade = CascadeType.PERSIST)
+    @OneToMany( targetEntity = Cartrecipedb.class, cascade = CascadeType.ALL)
     private Set<Cartrecipedb> cartrecipedb = new HashSet<>();
 
     public String getName() {

@@ -1142,7 +1142,7 @@ var AuthService = (function () {
             'Accept': 'text/plain',
         });
         var acoountData = email + name;
-        this.http.post(this.currenthost + '/mavenweb1-1.0-SNAPSHOT/rest/login', acoountData, { headers: headers })
+        this.http.post(this.currenthost + '/rest/login', acoountData, { headers: headers })
             .subscribe(function (resp) {
             _this.token = resp.headers.get('Authorization'); // в этот момент пришёл токен   
             console.log(resp.headers.get('Authorization'));
@@ -1318,7 +1318,7 @@ var ShopingHttpService = (function () {
         //       ,this.selservice.getrecipes());
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         console.log(this.authservice.getToken());
-        return this.http.put(this.currenthost + '/mavenweb1-1.0-SNAPSHOT/rest/recipies/all?auth='
+        return this.http.put(this.currenthost + '/rest/recipies/all?auth='
             + this.authservice.getToken(), this.selservice.getrecipes(), { headers: headers });
     };
     ShopingHttpService.prototype.getrecipies = function () {
@@ -1361,7 +1361,7 @@ var ShopingHttpService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
             'Accept': 'application/json'
         });
-        this.http.get(this.currenthost + '/mavenweb1-1.0-SNAPSHOT/rest/cart/all?auth='
+        this.http.get(this.currenthost + '/rest/cart/all?auth='
             + this.authservice.getToken(), { headers: headers })
             .subscribe(function (response) {
             var cartsmix = response.json();
@@ -1377,7 +1377,7 @@ var ShopingHttpService = (function () {
                      +this.authservice.getToken(), this.cartservice.getCarts());  */
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json' });
         console.log(this.authservice.getToken());
-        return this.http.put(this.currenthost + '/mavenweb1-1.0-SNAPSHOT/rest/cart/all?auth='
+        return this.http.put(this.currenthost + '/rest/cart/all?auth='
             + this.authservice.getToken(), this.cartservice.getCarts(), { headers: headers });
     };
     ShopingHttpService = __decorate([

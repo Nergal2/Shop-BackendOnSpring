@@ -50,6 +50,7 @@ public class CartTest {
     @Test
     public void storeCartTest() throws Exception {
         Cart cart1 = mapper.readValue(jsonCart, Cart.class);
+
         Cartdb cartdb = new Cartdb("Vegan", 600, "vegan@yoga.ru", "Androgyne — гермафродит", 0);
         given(cartService.createNewCart(cart1)).willReturn(cartdb);
 

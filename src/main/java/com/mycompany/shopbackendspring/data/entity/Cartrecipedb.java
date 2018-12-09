@@ -8,6 +8,7 @@ package com.mycompany.shopbackendspring.data.entity;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -21,15 +22,9 @@ import javax.validation.constraints.NotNull;
 @Table(name = "cartrecipedb")
 public class Cartrecipedb implements Serializable {
 
-    @Id
-    @NotNull
-    @Column(name = "orderid")
-    private int orderid;
-
-    @Id
-    @NotNull
-    @Column(name = "id")
-    private int id;
+    //@Id
+    @EmbeddedId
+    private CartrecipedbID cartrecipedbID;
 
     @NotNull
     @Column(name = "name")
@@ -52,20 +47,12 @@ public class Cartrecipedb implements Serializable {
     public Cartrecipedb() {
     }
 
-    public int getOrderid() {
-        return orderid;
+    public CartrecipedbID getCartrecipedbID() {
+        return this.cartrecipedbID;
     }
 
-    public void setOrderid(int orderid) {
-        this.orderid = orderid;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setCartrecipedbID(CartrecipedbID cartrecipedbID) {
+        this.cartrecipedbID = cartrecipedbID;
     }
 
     public String getName() {
