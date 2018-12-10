@@ -19,8 +19,6 @@ import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 /**
  *
@@ -56,10 +54,10 @@ public class CartService {
             Set<Cartrecipedb> cartRecipeTempDb = new HashSet<>();
             for (CartItem cartItemTemp : cartTempArr) {
                 Cartrecipedb cartRecTemp = new Cartrecipedb(); //  prepare element for Cartrecipedb
-           //     cartRecTemp.getCartrecipedbID().setOrderid(rnd);
+                //     cartRecTemp.getCartrecipedbID().setOrderid(rnd);
                 Recipe cartRec = cartItemTemp.getRec();  // take another element and get data from it
                 CartrecipedbID cartRecTempID = new CartrecipedbID(rnd, cartRec.getId());
-               // cartRecTemp.getCartrecipedbID().setId(cartRec.getId());
+                // cartRecTemp.getCartrecipedbID().setId(cartRec.getId());
                 cartRecTemp.setCartrecipedbID(cartRecTempID);
                 cartRecTemp.setName(cartRec.getName());
                 cartRecTemp.setPrice(cartRec.getPrice());
@@ -72,8 +70,8 @@ public class CartService {
             }
             if (totalPrice == 0) {
                 cartTemp.setCartrecipedb(cartRecipeTempDb);
-                       String s1 = this.cartRepository.save(cartTemp).getName();
-                       System.out.println("Save new  cart name: "+s1);
+                String s1 = this.cartRepository.save(cartTemp).getName();
+                System.out.println("Save new  cart name: " + s1);
                 return cartTemp;
             } else {
                 System.out.println("Total price is different by " + totalPrice);
@@ -97,6 +95,20 @@ public class CartService {
         return cartArr;
     }
 
+    public String storeAllCartsDB(List<Cart> carts) {
+        List<Integer> newtids = new ArrayList<>();
+        List<Cartdb> oldArr = this.cartRepository.findAll();
+        for (Cart cart : carts) {
+            newtids.add(this.encryptingService.base64decode(cart.getOrderId()));
+        }
+        for (Cartdb cartdb : oldArr) {
+            if (!newtids.contains(cartdb.getOrderid())) {
+                this.cartRepository.deleteById(cartdb.getOrderid());
+            }
+        }
+        return "Database: carts updated";
+    }
+
     private CartItem[] getCartRecipiesDB(int id) {
         if (id != 0) {
             List<Cartrecipedb> result = cartrecipedbRepository.getCartsForOrderID(id);
@@ -112,8 +124,9 @@ public class CartService {
             }
             CartItem[] y = cram.toArray(new CartItem[cram.size()]);
             return y;
-        } else 
+        } else {
             return null;
+        }
     }
 
 }

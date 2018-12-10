@@ -7,9 +7,6 @@ package com.mycompany.shopbackendspring.data.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -18,17 +15,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class CartItem implements Serializable {
-    //   @Id
 
     @Basic(optional = false)
-    //   @NotNull
-//    @Column(name = "rec")
+
     private Recipe rec;
 
-    //   @Id
     @Basic(optional = false)
-    //   @NotNull
-//    @Column(name = "numb")
+
     private int numb;
 
     public CartItem() {

@@ -8,12 +8,10 @@ package com.mycompany.shopbackendspring.data.entity;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -52,7 +50,7 @@ public class Cartdb implements Serializable {
     private int orderid;
 
     @NotNull
-    @OneToMany( targetEntity = Cartrecipedb.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Cartrecipedb.class, cascade = CascadeType.ALL)
     private Set<Cartrecipedb> cartrecipedb = new HashSet<>();
 
     public String getName() {

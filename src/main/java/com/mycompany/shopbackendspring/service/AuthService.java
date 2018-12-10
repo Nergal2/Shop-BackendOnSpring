@@ -13,18 +13,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AuthService {
-    
+
     private final String token = "token key valueadmin@admin.ruadmin male";
     private final String admin = "admin@admin.ruadmin male";
-    
-    public boolean isAuthorized(String tokenAuth){
+
+    public boolean isAuthorized(String tokenAuth) {
         return this.token.equals(tokenAuth);
     }
-    
-    public String checkAutorizationForCredentials(String s){
-        if (s.equals(admin)){
-            return this.token;            
-        } else 
+
+    public String checkAutorizationForCredentials(String s) {
+        if (s.equals(admin)) {
+            return this.token;
+        } else {
             return "";
+        }
     }
 }

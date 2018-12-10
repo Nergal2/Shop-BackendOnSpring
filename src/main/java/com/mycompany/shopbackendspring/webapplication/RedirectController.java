@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Nergal
  */
 @Controller
-// @RequestMapping(value = "/catalogue")
 public class RedirectController {
 
     @RequestMapping(value = "/catalogue", method = RequestMethod.GET)

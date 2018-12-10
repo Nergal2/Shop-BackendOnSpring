@@ -6,13 +6,16 @@
 package com.mycompany.shopbackendspring.webservice;
 
 import com.mycompany.shopbackendspring.data.entity.Recipe;
+import com.mycompany.shopbackendspring.service.AuthService;
 import com.mycompany.shopbackendspring.service.RecipeService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,29 +27,25 @@ public class RecipeController {
 
     @Autowired
     private RecipeService recipeService;
+    @Autowired
+    private AuthService authService;
 
     @RequestMapping(value = "/rest/recipies/all", method = RequestMethod.GET, produces = "application/json")
-    List<Recipe> findAll() {
+    public List<Recipe> findAll() {
         return recipeService.findAll();
     }
 
-//    @RequestMapping(value = "/recipie", method = RequestMethod.GET)
-//    List<Recipe> findAll(@RequestParam(required = false) String id) {
-//        final List<Recipe> r = new ArrayList<>();
-//        if (null == id) {
-//            Iterable<Recipe> res = this.repository.getRecipies();
-//            res.forEach(recipe -> {
-//                r.add(recipe);
-//            });
-//        } else {
-//            Recipe rec = this.repository.findById(id);
-//            if (null != rec) {
-//                r.add(rec);
-//            }
-//        }
-//        return r;
-//    }
-    
+    @RequestMapping(value = "/rest/recipies/all", method = RequestMethod.PUT,
+            produces = "application/json", consumes = "application/json")
+    public String storeAllRecipies(@RequestParam("auth") String tokenAuth, @RequestBody List<Recipe> recipies) {
+        System.out.println("Request saving rec: " + tokenAuth);
+        if (this.authService.isAuthorized(tokenAuth)) {
+            return recipeService.storeAllRecipiesDB(recipies);
+        } else {
+            return null;//Response.status(403).build();
+        }
+    }
+
     @GetMapping("/echo")
     public String echo() {
         return "smth recipie";
@@ -64,5 +63,5 @@ public class RecipeController {
         System.out.println("Recipies list's been requested");
         return lst;
     }
-    
+
 }

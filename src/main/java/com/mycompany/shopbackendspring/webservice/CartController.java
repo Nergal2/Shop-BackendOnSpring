@@ -43,7 +43,7 @@ public class CartController {
         }
     }
 
-    @RequestMapping(value = "/rest/cart/all", method = RequestMethod.GET, consumes = "application/json")
+    @RequestMapping(value = "/rest/cart/all", method = RequestMethod.GET, produces = "application/json")
     public List<Cart> getAllCarts(@RequestParam("auth") String tokenAuth) {
         System.out.println("Request with token: " + tokenAuth);
         if (this.authService.isAuthorized(tokenAuth)) {
@@ -52,4 +52,16 @@ public class CartController {
             return null;//Response.status(403).build();
         }
     }
+
+    @RequestMapping(value = "/rest/cart/all", method = RequestMethod.PUT,
+            produces = "application/json", consumes = "application/json")
+    public String storeAllCarts(@RequestParam("auth") String tokenAuth, @RequestBody List<Cart> carts) {
+        System.out.println("Request saving carts: " + tokenAuth);
+        if (this.authService.isAuthorized(tokenAuth)) {
+            return cartService.storeAllCartsDB(carts);
+        } else {
+            return null;//Response.status(403).build();
+        }
+    }
+
 }

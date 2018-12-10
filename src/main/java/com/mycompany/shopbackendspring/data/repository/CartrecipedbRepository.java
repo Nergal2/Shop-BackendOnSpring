@@ -22,7 +22,4 @@ public interface CartrecipedbRepository extends JpaRepository<Cartrecipedb, Cart
 
     @Query("SELECT crdb FROM Cartrecipedb crdb WHERE crdb.cartrecipedbID.orderid = :orderid")
     List<Cartrecipedb> getCartsForOrderID(@Param("orderid") int orderid);
-
-//    @Query("SELECT crdb FROM Cartrecipedb crdb")
-//    List<Cartrecipedb> getCarts(Integer id);
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.shopbackendspring.data.entity;
+
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -13,35 +14,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Администратор
  */
 @XmlRootElement
-//@Entity
-//@Table(name = "cart")
+
 public class Cart implements Serializable {
-//    @Id
 
     @Basic(optional = false)
-//    @NotNull
-//    @Column(name = "name")
+
     private String name;
 
-//    @Id
     @Basic(optional = false)
-//    @NotNull
-//    @Column(name = "email")
+
     private String email;
 
     @Basic(optional = false)
-//    @NotNull
-//    @Column(name = "sex")
+
     private String sex;
 
     @Basic(optional = true)
-//    @NotNull
-//    @Column(name = "cart") 
+
     private CartItem[] cart;
 
     @Basic(optional = false)
-//    @NotNull
-//    @Column(name = "price")
+
     private int price;
 
     @Basic(optional = true)

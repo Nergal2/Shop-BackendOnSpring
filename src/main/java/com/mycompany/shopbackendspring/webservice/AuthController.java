@@ -21,16 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class AuthController {
-    
+
     @Autowired
     private AuthService authService;
-    
+
     @RequestMapping(value = "/rest/login", method = RequestMethod.POST)
     public ResponseEntity loginProcessing(@RequestBody String s) {
         System.out.println("login with " + s);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("Authorization", this.authService.checkAutorizationForCredentials(s));
-        ResponseEntity responseEntity = new ResponseEntity(" ",responseHeaders,HttpStatus.OK);
+        ResponseEntity responseEntity = new ResponseEntity(" ", responseHeaders, HttpStatus.OK);
         return responseEntity;
     }
 }
