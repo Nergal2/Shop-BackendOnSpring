@@ -19,13 +19,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
- *
- * @author Администратор
+ * Сущность для заказа с корзиной продуктов
  */
 @Entity //(name = "cartdb")
 @Table(name = "cartdb")
 @NamedQueries({
-    @NamedQuery(name = "Cartdb.getCarts", query = "SELECT c FROM Cartdb c")})
+        @NamedQuery(name = "Cartdb.getCarts", query = "SELECT c FROM Cartdb c")})
 public class Cartdb implements Serializable {
 
     @NotNull

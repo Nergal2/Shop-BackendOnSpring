@@ -8,8 +8,10 @@ package com.mycompany.shopbackendspring.webservice;
 import com.mycompany.shopbackendspring.data.entity.Recipe;
 import com.mycompany.shopbackendspring.service.AuthService;
 import com.mycompany.shopbackendspring.service.RecipeService;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
  * @author Nergal
  */
 @RestController

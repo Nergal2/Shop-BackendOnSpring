@@ -18,14 +18,13 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author Администратор
+ * Сущность для продкута и для импорта  из xml
  */
 @XmlRootElement
 @Entity //(name = "recipe")
 @Table(name = "recipe")
 @NamedQueries({
-    @NamedQuery(name = "Recipe.findAll", query = "SELECT r FROM Recipe r")})
+        @NamedQuery(name = "Recipe.findAll", query = "SELECT r FROM Recipe r")})
 //@Access(AccessType.PROPERTY)
 public class Recipe implements Serializable {
 

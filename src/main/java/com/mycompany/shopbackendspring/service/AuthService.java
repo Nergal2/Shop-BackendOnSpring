@@ -8,7 +8,6 @@ package com.mycompany.shopbackendspring.service;
 import org.springframework.stereotype.Service;
 
 /**
- *
  * @author Nergal
  */
 @Service

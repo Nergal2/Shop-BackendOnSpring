@@ -7,12 +7,13 @@ package com.mycompany.shopbackendspring.service;
 
 import com.mycompany.shopbackendspring.data.entity.Recipe;
 import com.mycompany.shopbackendspring.data.repository.RecipeRepository;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
  * @author Nergal
  */
 @Service

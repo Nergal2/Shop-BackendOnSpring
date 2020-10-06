@@ -11,7 +11,6 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 /**
- *
  * @author Nergal
  */
 @Embeddable

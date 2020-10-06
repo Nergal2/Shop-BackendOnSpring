@@ -9,7 +9,9 @@ import com.mycompany.shopbackendspring.data.entity.Cart;
 import com.mycompany.shopbackendspring.data.entity.Cartdb;
 import com.mycompany.shopbackendspring.service.AuthService;
 import com.mycompany.shopbackendspring.service.CartService;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
  * @author Nergal
  */
 @RestController

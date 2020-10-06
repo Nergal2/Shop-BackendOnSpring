@@ -10,7 +10,6 @@ import javax.persistence.Basic;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author Администратор
  */
 @XmlRootElement

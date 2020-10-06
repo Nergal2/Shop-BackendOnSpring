@@ -10,8 +10,7 @@ import javax.persistence.Basic;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author Администратор
+ * Сущность корзины продуктов
  */
 @XmlRootElement
 public class CartItem implements Serializable {

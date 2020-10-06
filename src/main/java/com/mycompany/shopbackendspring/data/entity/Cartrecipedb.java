@@ -13,8 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
- *
- * @author Администратор
+ * Сущность для корзины
  */
 @Entity//(name = "cartrecipedb")
 @Table(name = "cartrecipedb")

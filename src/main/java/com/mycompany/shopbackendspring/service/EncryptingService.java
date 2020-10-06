@@ -7,12 +7,12 @@ package com.mycompany.shopbackendspring.service;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
 import org.springframework.stereotype.Service;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 /**
- *
  * @author Nergal
  */
 @Service
